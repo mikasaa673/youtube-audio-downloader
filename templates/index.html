@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Downloader</title>
+    <link rel="stylesheet" href="{{ url_for('serve_css', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="theme-toggle">
+        <button id="themeToggle" class="theme-btn">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <div class="wrapper">
+        <div class="content">
+            <div class="header">
+                <h1>YouTube Audio Downloader</h1>
+                <p class="subtitle">Download your favorite YouTube videos as MP3 files</p>
+            </div>
+
+            <div class="container">
+                <form method="POST" class="download-form">
+                    <div class="input-group">
+                        <input type="text" name="url" id="url" class="styled-input" placeholder="Paste YouTube URL here..." required>
+                        <button type="submit" class="download-btn">
+                            <span class="btn-text">Download</span>
+                            <span class="btn-icon">↓</span>
+                        </button>
+                    </div>
+                </form>
+
+                <div class="instructions-container">
+                    <h2 class="instructions-title">How to Download</h2>
+                    <div class="instructions-content">
+                        <div class="instruction-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h3>Find Your Video</h3>
+                                <p>Go to YouTube and find the video you want to download as audio.</p>
+                            </div>
+                        </div>
+                        <div class="instruction-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h3>Copy the URL</h3>
+                                <p>Copy the video URL from your browser's address bar.</p>
+                            </div>
+                        </div>
+                        <div class="instruction-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h3>Paste and Download</h3>
+                                <p>Paste the URL into the input field above and click the Download button.</p>
+                            </div>
+                        </div>
+                        <div class="instruction-step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h3>Find Your Audio File</h3>
+                                <p>Your audio file will be automatically downloaded to the <strong>'downloads'</strong> folder in your project directory. The file will be saved as an MP3 with the video's title as the filename.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        const icon = themeToggle.querySelector('i');
+
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            body.classList.add(savedTheme);
+            updateIcon(savedTheme);
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-theme');
+            const currentTheme = body.classList.contains('light-theme') ? 'light-theme' : '';
+            localStorage.setItem('theme', currentTheme);
+            updateIcon(currentTheme);
+        });
+
+        function updateIcon(theme) {
+            if (theme === 'light-theme') {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        }
+    </script>
+</body>
+</html>

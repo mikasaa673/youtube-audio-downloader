@@ -1,0 +1,295 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --bg-gradient-dark: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    --bg-gradient-light: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    --content-bg-dark: rgba(255, 255, 255, 0.05);
+    --content-bg-light: rgba(255, 255, 255, 0.8);
+    --text-primary-dark: #ffffff;
+    --text-primary-light: #2c3e50;
+    --text-secondary-dark: #a8b2d1;
+    --text-secondary-light: #4a5568;
+    --input-bg-dark: rgba(255, 255, 255, 0.05);
+    --input-bg-light: rgba(255, 255, 255, 0.9);
+    --input-border-dark: rgba(255, 255, 255, 0.1);
+    --input-border-light: rgba(0, 0, 0, 0.1);
+    --btn-gradient-dark: linear-gradient(45deg, #00b4d8, #90e0ef);
+    --btn-gradient-light: linear-gradient(45deg, #4facfe, #00f2fe);
+    --shadow-dark: rgba(0, 0, 0, 0.1);
+    --shadow-light: rgba(0, 0, 0, 0.05);
+}
+
+body {
+    min-height: 100vh;
+    background: var(--bg-gradient-dark);
+    color: var(--text-primary-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+body.light-theme {
+    background: var(--bg-gradient-light);
+    color: var(--text-primary-light);
+}
+
+.wrapper {
+    width: 100%;
+    max-width: 1200px;
+    padding: 2rem;
+}
+
+.content {
+    background: var(--content-bg-dark);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 8px 32px var(--shadow-dark);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.light-theme .content {
+    background: var(--content-bg-light);
+    box-shadow: 0 8px 32px var(--shadow-light);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    background: var(--btn-gradient-dark);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: background 0.3s ease;
+}
+
+body.light-theme h1 {
+    background: var(--btn-gradient-light);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    color: var(--text-secondary-dark);
+    font-size: 1.1rem;
+    font-weight: 300;
+    transition: color 0.3s ease;
+}
+
+body.light-theme .subtitle {
+    color: var(--text-secondary-light);
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.download-form {
+    width: 100%;
+}
+
+.input-group {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.styled-input {
+    flex: 1;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 12px;
+    border: 2px solid var(--input-border-dark);
+    background: var(--input-bg-dark);
+    color: var(--text-primary-dark);
+    transition: all 0.3s ease;
+}
+
+body.light-theme .styled-input {
+    border: 2px solid var(--input-border-light);
+    background: var(--input-bg-light);
+    color: var(--text-primary-light);
+}
+
+.styled-input::placeholder {
+    color: var(--text-secondary-dark);
+    transition: color 0.3s ease;
+}
+
+body.light-theme .styled-input::placeholder {
+    color: var(--text-secondary-light);
+}
+
+.styled-input:focus {
+    outline: none;
+    border-color: #00b4d8;
+    background: var(--input-bg-dark);
+    box-shadow: 0 0 0 3px rgba(0, 180, 216, 0.1);
+}
+
+body.light-theme .styled-input:focus {
+    background: var(--input-bg-light);
+}
+
+.download-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: var(--btn-gradient-dark);
+    border: none;
+    border-radius: 12px;
+    color: var(--text-primary-dark);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+body.light-theme .download-btn {
+    background: var(--btn-gradient-light);
+    color: var(--text-primary-light);
+}
+
+.download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 180, 216, 0.3);
+}
+
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.theme-btn {
+    background: var(--content-bg-dark);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text-primary-dark);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px var(--shadow-dark);
+}
+
+body.light-theme .theme-btn {
+    background: var(--content-bg-light);
+    color: var(--text-primary-light);
+    box-shadow: 0 2px 10px var(--shadow-light);
+}
+
+.theme-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .wrapper {
+        padding: 1rem;
+    }
+    
+    .content {
+        padding: 2rem;
+    }
+    
+    .input-group {
+        flex-direction: column;
+    }
+    
+    .download-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+.instructions-container {
+    margin-top: 2rem;
+    width: 100%;
+    background: var(--content-bg-dark);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+body.light-theme .instructions-container {
+    background: var(--content-bg-light);
+}
+
+.instructions-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-primary-dark);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+body.light-theme .instructions-title {
+    color: var(--text-primary-light);
+}
+
+.instruction-step {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    align-items: flex-start;
+}
+
+.instruction-step:last-child {
+    margin-bottom: 0;
+}
+
+.step-number {
+    background: var(--btn-gradient-dark);
+    color: var(--text-primary-dark);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+body.light-theme .step-number {
+    background: var(--btn-gradient-light);
+    color: var(--text-primary-light);
+}
+
+.step-content h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary-dark);
+}
+
+body.light-theme .step-content h3 {
+    color: var(--text-primary-light);
+}
+
+.step-content p {
+    color: var(--text-secondary-dark);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+body.light-theme .step-content p {
+    color: var(--text-secondary-light);
+}
