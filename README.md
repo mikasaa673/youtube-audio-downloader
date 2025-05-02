@@ -2,7 +2,7 @@
 
 A simple and elegant web application that allows you to download audio from YouTube videos as MP3 files. Built with Flask and yt-dlp.
 
-![Screenshot](screenshot.png)
+![Screenshot](Screenshot.png)
 
 ## Features
 
